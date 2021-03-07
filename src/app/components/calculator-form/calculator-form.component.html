@@ -1,0 +1,27 @@
+<form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    First number:
+    <input type="text" formControlName="num1">
+    <span *ngIf="calculatorForm.controls.num1.invalid">Please enter a value</span>
+  </label>
+
+  <label>
+    Second number:
+    <input type="text" formControlName="num2">
+    <span *ngIf="calculatorForm.controls.num2.invalid">Please enter a value</span>
+  </label>
+
+  <label for="operation">Choose an operation:</label>
+  <select name="operation" id="operation" formControlName="operation">
+    <option value="add">add</option>
+    <option value="subtract">subtract</option>
+    <option value="divide">divide</option>
+    <option value="multiply">multiply</option>
+  </select>
+
+  <button type="submit" [disabled]="!calculatorForm.valid">Submit</button>
+
+</form>
+
+<h1 [innerText]="result"></h1>
